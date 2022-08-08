@@ -21,7 +21,7 @@ SET @@SESSION.SQL_LOG_BIN= 0;
 -- GTID state at the beginning of the backup 
 --
 
-SET @@GLOBAL.GTID_PURGED=/*!80000 '+'*/ 'f41d366d-91e5-11e9-8525-cecd028ee826:1-119636806';
+SET @@GLOBAL.GTID_PURGED=/*!80000 '+'*/ 'f41d366d-91e5-11e9-8525-cecd028ee826:1-119840810';
 
 --
 -- Table structure for table `educacion`
@@ -37,8 +37,9 @@ CREATE TABLE `educacion` (
   `inicio` varchar(255) DEFAULT NULL,
   `institucion` varchar(255) DEFAULT NULL,
   `titulo` varchar(255) DEFAULT NULL,
+  `img` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,7 +48,7 @@ CREATE TABLE `educacion` (
 
 LOCK TABLES `educacion` WRITE;
 /*!40000 ALTER TABLE `educacion` DISABLE KEYS */;
-INSERT INTO `educacion` VALUES (1,'HTML, CSS, Java Script, Type Script, Angular, Bootstrap, MySql, Java, Springboot.','Julio de 2022','Agosto de 2021','Argentina Programa','Full Stack Developer Jr'),(2,'Inglés técnico','Mayo de 2022','Marzo de 2022','Argentina Programa','Inglés para Desarrolladores'),(3,'Medicina Veterinaria','2010','2007','Universidad de Buenos Aires','Estudiante de Veterinaria'),(4,'Educación media','1995','1991','Escuela Normal Nacional Superior Domingo Faustino sarmiento','Bachiller especializado en Física y Matemática');
+INSERT INTO `educacion` VALUES (1,'HTML, CSS, JS, Bootstrap, Angular, Typescript, Java, Springboot, Phyton','Julio 2022','Agosto 2021','Argentina Programa','Desarrolladora Full Stack Jr',NULL),(4,'Inglés técnico','Mayo 2022','Marzo 2022','Argentina Programa','Inglés para Desarrolladores',NULL),(6,'Medicina Veterinaria.','2010','1997','Universidad de Buenos Aires','Estudiante de Veterinaria',NULL),(7,'Inglés avanzado, Alemán pricipiante.','','','Autodidacta','Idiomas',NULL);
 /*!40000 ALTER TABLE `educacion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -63,7 +64,7 @@ CREATE TABLE `experiencia` (
   `descripcione` varchar(255) DEFAULT NULL,
   `nombree` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,7 +73,7 @@ CREATE TABLE `experiencia` (
 
 LOCK TABLES `experiencia` WRITE;
 /*!40000 ALTER TABLE `experiencia` DISABLE KEYS */;
-INSERT INTO `experiencia` VALUES (1,'Desde: Abril de 2013, Hasta: Actualidad. Propietaria y peluquera, atención al cliente, asignación de turnos, control de Stock.','Peluquería Canina F&V'),(2,'Desde: Octubre de 2009, hasta: Abril de 2013. Peluquera Canina y ayudante de quirófano.','Veterinaria Zoo'),(3,'Peluquera canina y auxiliar de la Veterinaria.','Veterinaria De María');
+INSERT INTO `experiencia` VALUES (3,'Desde: 2103, Hasta: Actualidad. Propietaria y Peluquera Canina, atención al cliente, manejo de insumos, organización de agenda.','Peluquería Canina F&V'),(6,'Inicio: 2009, Finalización: 2013. Peluquera Canina y ayudante de quirófano.','Veterinaria Zoo'),(7,'Desde: Abril de 2008. Hasta: Diciembre de 2009. Peluquera canina y auxiliar.','Veterinaria De María');
 /*!40000 ALTER TABLE `experiencia` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -86,11 +87,11 @@ DROP TABLE IF EXISTS `persona`;
 CREATE TABLE `persona` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `apellido` varchar(50) NOT NULL,
-  `descripcion` varchar(255) NOT NULL,
-  `img` varchar(300) DEFAULT NULL,
+  `img` varchar(50) DEFAULT NULL,
   `nombre` varchar(50) NOT NULL,
+  `descripcion` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -99,7 +100,7 @@ CREATE TABLE `persona` (
 
 LOCK TABLES `persona` WRITE;
 /*!40000 ALTER TABLE `persona` DISABLE KEYS */;
-INSERT INTO `persona` VALUES (1,'Ramirez','Estudiante Full Stack Developer Jr en Argentina Programa. Curiosa por aprender siempre algo nuevo y amante de los viajes. ','https://ibb.co/TLRkdY2','Verónica');
+INSERT INTO `persona` VALUES (1,'Ramirez','https://ibb.co/58xcnbw','Verónica','Estudiante Full Stack Developer Jr. Soy curiosa por naturaleza, y siempre me gusta aprender algo nuevo. Amante de los viajes y la montaña.'),(2,'Ramirez','nuevaFoto','Fernanda','');
 /*!40000 ALTER TABLE `persona` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -114,7 +115,7 @@ CREATE TABLE `rol` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `rol_nombre` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -123,7 +124,7 @@ CREATE TABLE `rol` (
 
 LOCK TABLES `rol` WRITE;
 /*!40000 ALTER TABLE `rol` DISABLE KEYS */;
-INSERT INTO `rol` VALUES (1,'ROLE_ADMIN'),(2,'ROLE_USER'),(3,'ROLE_ADMIN'),(4,'ROLE_USER');
+INSERT INTO `rol` VALUES (1,'ROLE_ADMIN'),(2,'ROLE_USER');
 /*!40000 ALTER TABLE `rol` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -142,7 +143,7 @@ CREATE TABLE `usuario` (
   `password` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_puhr3k3l7bj71hb7hk7ktpxn0` (`nombre_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -151,7 +152,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'verdani8@gmail.com','Verónica Ramirez','verdani8','userPass');
+INSERT INTO `usuario` VALUES (2,'verdani8@gmail.com','Verónica','verdani8','$2a$10$p55pez8OWX3zzYqKmtAYDuPnGr9Lb5f0QVkyiblemEMTZZ/4CwO82'),(3,'usuario@usuario.com','usuario','usuario','$2a$10$q22Cd5vPpb65kuepVNeH5OZiF18ZU9QMh/RrCMPlgJSalywsvIo9y'),(4,'kepe@kepe.com','kepe','kepe','$2a$10$jDWaghilfWR9yi5SXkCbT.Dqh2GCLTTRT/ENiSYXdnUpkLOBRMtSG'),(5,'verdani8@hotmail.com','Verónica Ramirez','admin','$2a$10$tStHkZacsyS50H1YOqxq4u/srQkFiUKEpKKHG4ssL7hInRuvI5bxi'),(6,'jazminchu@jazminchu.com','jazminchu','jazminchu','$2a$10$o.FZC5X7el3R2mI7YUrJgu9piUD6vn3lJBgrcW6qpPwT/6xOedHPW');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -169,7 +170,7 @@ CREATE TABLE `usuario_rol` (
   KEY `FK610kvhkwcqk2pxeewur4l7bd1` (`rol_id`),
   CONSTRAINT `FK610kvhkwcqk2pxeewur4l7bd1` FOREIGN KEY (`rol_id`) REFERENCES `rol` (`id`),
   CONSTRAINT `FKbyfgloj439r9wr9smrms9u33r` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -178,7 +179,7 @@ CREATE TABLE `usuario_rol` (
 
 LOCK TABLES `usuario_rol` WRITE;
 /*!40000 ALTER TABLE `usuario_rol` DISABLE KEYS */;
-INSERT INTO `usuario_rol` VALUES (1,1);
+INSERT INTO `usuario_rol` VALUES (2,1),(2,2),(3,2),(4,2),(5,2),(6,2);
 /*!40000 ALTER TABLE `usuario_rol` ENABLE KEYS */;
 UNLOCK TABLES;
 SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
@@ -192,4 +193,4 @@ SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-31 17:04:45
+-- Dump completed on 2022-08-05 23:00:17
